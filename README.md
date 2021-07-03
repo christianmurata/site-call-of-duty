@@ -4,10 +4,7 @@ Clone da página inicial do site call of duty [(Link)](https://www.callofduty.co
 
 ## Resultado
 
-Desktop:
 ![Resultado Desktop](./imgs/preview-site-cod-desktop.png)
-
-Mobile:
 ![Resultado Mobile](./imgs/preview-site-cod-mobile.png)
 
 # Autor
