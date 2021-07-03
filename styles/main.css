@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css?family=Arvo|Electrolize|Montserrat|Open+Sans|Open+Sans+Condensed:300');
+@import url('https://fonts.googleapis.com/css?family=Oswald:300,400,600&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans:700,800,900');
+
+*, html {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+
+.menubar {
+  background-color: #000;
+  overflow: hidden;
+  list-style-type: none;
+  text-transform: uppercase;
+}
+
+.menubar a {
+  float: left;
+  color: #969696;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-style: normal;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1.15;
+}
+
+.menubar a:hover {
+  background-color: #959595;
+  color: #fff;
+}
+
+.menubar a.play {
+  background-color: #7B6E3B;
+  color: #fff;
+  border: 1px solid #d0a137;
+}
+
+.menubar li.logo {
+  display: inline;
+}
+
+.menubar li.logo img {
+  height: 17px;
+  display: flex;
+}
+
+.menubar li.align-right {
+  display: inline;
+  float: right;
+}
+
+.main {
+  height: 100vh;
+  min-height: 775px;
+  background-image: url("../imgs/home-background.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
