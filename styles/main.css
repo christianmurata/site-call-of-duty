@@ -55,10 +55,64 @@
 }
 
 .main {
-  height: 100vh;
+  height: calc(100vh - 45px);
   min-height: 775px;
   background-image: url("../imgs/home-background.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.main h2 {
+  font-weight: 800;
+  color: #fff;
+  font-size: 27px;
+  letter-spacing: 3px;
+  text-align: center;
+  padding: 0px 0 25px;
+}
+
+.main .content {
+  position: absolute;
+  left: 50%;
+  bottom: 50px;
+  max-width: 550px;
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  -o-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+}
+
+.main .more-info {
+  display: flex;
+  justify-content: center;
+}
+
+.main .more-info button {
+  padding: 13px 20px;
+  position: relative;
+  width: fit-content;
+  border-top: 2px solid #cdc4bd;
+  border-bottom: 2px solid #cdc4bd;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  background-color: #e5e3e3;
+}
+
+.main .more-info a {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 24px;
+  color: #33312f;
+  text-transform: uppercase;
+  text-shadow: 0px 0px 10px 000000;
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: fit-content;
 }
