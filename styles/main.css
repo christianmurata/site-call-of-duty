@@ -12,6 +12,8 @@
 
 .menubar {
   background-color: #000;
+  background-image: url(../imgs/nav-bg.png);
+  background-size: 2px;
   overflow: hidden;
   list-style-type: none;
   text-transform: uppercase;
@@ -38,6 +40,8 @@
   background-color: #7B6E3B;
   color: #fff;
   border: 1px solid #d0a137;
+  background-image: url(../imgs/btn-bg.jpg);
+  background-size: 2px;
 }
 
 .menubar li.logo {
@@ -52,6 +56,19 @@
 .menubar li.align-right {
   display: inline;
   float: right;
+}
+
+.menubar li.item a img {
+  width: 11px;
+  height: 9px;
+  margin-left: 10px;
+}
+
+.menubar li.item a img.icon {
+  width: 14px;
+  height: 12px;
+  margin-right: 15px;
+  opacity: .5;
 }
 
 .main {
