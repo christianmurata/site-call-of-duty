@@ -7,7 +7,15 @@
   margin: 0;
   border: 0;
   padding: 0;
+}
+
+body {
+  background-color: #fafafa;
   font-family: 'Montserrat', Arial, sans-serif;
+}
+
+#app {
+  overflow-y: hidden;
 }
 
 .menubar {
@@ -132,4 +140,89 @@
   z-index: 2;
   display: block;
   width: fit-content;
+}
+
+.login, .dashboard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 40vw;
+  background: #fafafa;
+}
+
+.login .content {
+  width: 80%;
+  max-width: 500px;
+}
+
+.dashboard {
+  height: auto;
+  margin-top: 30px;
+}
+
+.dashboard .content {
+  width: 80%;
+}
+
+.dashboard .search {
+
+}
+
+.dashboard h3 {
+  margin: 10px 0;
+}
+
+.form .btn {
+  display: inline-block;
+  background: #7B6E3B;
+  border: 1px solid darken(#7B6E3B, 5%);
+  padding: .5em 2em;
+  color: #fafafa;
+  margin-right: .5em;
+  margin-top: 2em;
+  box-shadow: inset 0px 1px 0px fadeout(#fafafa, 80%);
+  cursor: pointer;
+}
+
+.form .btn:hover {
+  background: lighten(#7B6E3B, 5%);
+}
+
+.form .btn:active {
+  background: #7B6E3B; 
+  box-shadow: inset 0px 1px 1px fadeout(black, 90%); 
+}
+
+.form .btn:focus {
+  border: 0;
+  outline: none;
+}
+
+.form input {
+  margin: auto auto;
+  width: 100%;
+  margin-top: 2em;
+  padding: .5em 0;
+  border: none;
+  background-color: #fafafa;
+  border-bottom: 1px solid #aaa;
+  padding-bottom: 1.25em;
+  color: #aaa;
+}
+
+.form span {
+  display: flex;
+  flex-direction: row;
+  color: #ED4337;
+  display: none;
+}
+
+.form input.error {
+  color: #ED4337;
+  border-bottom: 1px solid #ED4337
+}
+
+.form input:focus {
+  outline:none;
 }
