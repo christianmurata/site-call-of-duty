@@ -7,6 +7,7 @@ class Login {
     this.submitLogin = document.getElementById('login-submit');
     this.inputs = document.getElementsByTagName('input');
     this.spanErrors = document.getElementsByTagName('span');
+    this.logoutButton = document.getElementById('logout');
     
     if (init)
       this.init();
@@ -16,7 +17,10 @@ class Login {
     if (this.getSessionToken())
       window.location.hash = 'dashboard';
 
+    this.header = new Header();
+
     this.submitLogin.addEventListener('click', (e) => this.login(e, this));
+    this.logoutButton.addEventListener('click', (e) => this.logout(this))
   }
 
   validation () {
@@ -35,10 +39,6 @@ class Login {
       return [false, 'password']
 
     return [true, null];
-  }
-
-  logout () {
-    localStorage.removeItem('token');
   }
 
   getSessionToken () {
@@ -96,10 +96,12 @@ class Login {
 
     try {
       const response = JSON.parse(await reqres.login(email, password));
-      
+
       context.setSessionToken(response.token);
+      context.header.userHeader();
 
       window.location.hash = 'dashboard';
+
     } catch (e) {
       context.displayError(context, null);
     }

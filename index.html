@@ -14,7 +14,7 @@
   </head>
 
   <body>
-    <header>
+    <header id="header">
       <nav>
         <ul class="menubar">
           <li class="logo"><a href="#"><img src="imgs/cod-logo-white.svg" alt="logo"></a></li>
@@ -22,25 +22,27 @@
           <li class="item"><a href="#">News</a></li>
           <li class="item"><a href="#">Esports<img src="./imgs/arrow.svg" alt=""></a></li>
           <li class="item"><a href="#">Suporte</a></li>
-          <li class="align-right"><a class="play" href="#login">Jogar Agora</a></li>
+          <li class="align-right" id="play"><a class="play" href="#login">Jogar Agora</a></li>
           <li class="item align-right"><a href="#"> <img class="icon" src="./imgs/menubar-icon.png" alt=""> My Call Of
               Duty</a></li>
           <li class="item align-right"><a href="#login">Entrar | Inscrever</a></li>
+          <li class="logout align-right" id="logout" style="display:none"><a href="#">Sair</a></li>
         </ul>
       </nav>
     </header>
 
     <main id="app"></main>
 
-
-    <script src="src/request.js"></script>
+    <script src="src/Header.js"></script>
     <script src="src/Route.js"></script>
     <script src="src/Router.js"></script>
     <script src="src/Login.js"></script>
+    <script src="src/Main.js"></script>
     <script src="src/Dashboard.js"></script>
     <script src="src/FreeToGame.js"></script>
     <script src="src/Reqres.js"></script>
     
+    <script src="src/request.js"></script>
     <script src="src/app.js"></script>
   </body>
 </html>
