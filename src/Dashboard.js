@@ -1,5 +1,6 @@
 class Dashboard {
   constructor () {
+    this.login = new Login(false);
     this.gamesList = document.getElementById('games');
     this.inputSearch = document.getElementById('search');
     this.inputError = document.getElementById('search-error');
@@ -9,8 +10,10 @@ class Dashboard {
   }
 
   init () {
+    if (!this.login.getSessionToken())
+      return window.location.hash = 'login';
+
     this.showGames();
-    this.submitSearch.addEventListener('click', (e) => this.searchGame(e, this));
     this.submitSearch.addEventListener('click', (e) => this.searchGame(e, this));
   }
 
