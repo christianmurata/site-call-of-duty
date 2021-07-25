@@ -24,28 +24,32 @@ class Router {
   dispatch(routes, defaultPath = false) {
     for (let route of routes) {
       if (defaultPath && route.defaultRoute){
-        this.open(route.html);
+        this.open(route.html, route);
         break;
       }
 
       if (route.isActive(window.location.hash)) {
-        this.open(route.html);
+        this.open(route.html, route);
         break;
       }
     }
   }
 
-  open(uri) {
+  open(uri, route) {
     const url = `views/${uri}`;
     const xhttp = new XMLHttpRequest();
 
     const self = this;
 
     xhttp.onreadystatechange = () => {
-      console.log(xhttp.responseText);
-
       if(xhttp.readyState === XMLHttpRequest.DONE && xhttp.status === 200) {
         self.rootElement.innerHTML = xhttp.responseText;
+        
+        try {
+          route.init();
+        } catch (error) {
+          console.log(`File ${uri} has no initialization class`);
+        }
       }
     }
 

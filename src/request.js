@@ -10,7 +10,7 @@ const toUrlParams = params => {
   return `?${urlParams.join('&')}`;
 }
 
-const request = async(url, params = [], cors = false) => {
+const request = async(url, params = false, cors = false) => {
   if (cors)
     url = `https://cors-anywhere.herokuapp.com/${url}`;
 
