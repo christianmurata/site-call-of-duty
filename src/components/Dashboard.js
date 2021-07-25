@@ -56,9 +56,14 @@ class Dashboard {
 
     const category = context.inputSearch.value;
     const freeToGame = new FreeToGame(context.gamesList, context.inputSearch);
-    const games = JSON.parse(await freeToGame.getByCategory(category));
-    const formattedGames = await freeToGame.toHtml(games);
 
-    freeToGame.display(formattedGames);
+    try {
+      const games = JSON.parse(await freeToGame.getByCategory(category));
+      const formattedGames = await freeToGame.toHtml(games);
+  
+      freeToGame.display(formattedGames);
+    } catch (e) {
+      freeToGame.display(['<p> Nenhum jogo encontrado. </p>'])
+    }
   }
 }
