@@ -11,16 +11,30 @@ class FreeToGame {
     this.gamesList = gamesList;
     this.inputSearch = inputSearch;
 
-    this.baseUrl = 'https://www.freetogame.com/api/games';
+    this.baseUrl = 'https://free-to-play-games-database.p.rapidapi.com/api/games';
     this.gameItemBase = request('views/game.html', false, false);
   }
 
   getAll () {
-    return request(this.baseUrl, false, true);
+    return request(
+      this.baseUrl, 
+      false, 
+      {
+        'x-rapidapi-key': '394ff7856dmshdfc464d0c1444e7p1df822jsn06f8be07529d',
+        'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com'
+      }
+    );
   }
 
   getByCategory (category) {
-    return request(this.baseUrl, {'category': category}, true);
+    return request(
+      this.baseUrl, 
+      {'category': category}, 
+      {
+        'x-rapidapi-key': '394ff7856dmshdfc464d0c1444e7p1df822jsn06f8be07529d',
+        'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com'
+      }
+    );
   }
 
   async toHtml (games) {

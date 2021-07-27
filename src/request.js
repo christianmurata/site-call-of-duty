@@ -10,13 +10,14 @@ const toUrlParams = params => {
   return `?${urlParams.join('&')}`;
 }
 
-const request = async(url, params = false, cors = false, method = 'get') => {
+const request = async(url, params = false, headers = false, method = 'get') => {
   const config = {
-    method: method
-  }
+    method: method,
+    headers: {},
+  };
 
-  if (cors)
-    url = `https://cors-anywhere.herokuapp.com/${url}`;
+  if (headers)
+    config.headers = headers;
 
   if (params && method === 'get')
     url = url + toUrlParams(params);
@@ -24,6 +25,7 @@ const request = async(url, params = false, cors = false, method = 'get') => {
   if (params && method === 'post'){
     config.body = JSON.stringify(params);
     config.headers = {
+      ...config.headers,
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     };
