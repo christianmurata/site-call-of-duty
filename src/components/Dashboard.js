@@ -21,9 +21,13 @@ class Dashboard {
 
   validation () {
     const input = this.inputSearch.value.trim();
+    const number = /\d/g;
     const format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
 
     if (!input)
+      return false;
+
+    if (number.test(input))
       return false;
 
     if (format.test(input))
