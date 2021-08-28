@@ -4,9 +4,8 @@ class Main {
     this.init();
   }
 
-
   init () {
-    if (this.login.getSessionToken())
+    if (auth.isAuthenticated())
       window.location.hash = 'dashboard';
   }
 }

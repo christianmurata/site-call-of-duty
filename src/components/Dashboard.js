@@ -11,12 +11,12 @@ class Dashboard {
   }
 
   init () {
-    if (!this.login.getSessionToken())
+    if (!auth.isAuthenticated())
       return window.location.hash = 'login';
           
-    this.showGames();
+    // this.showGames();
     this.header.userHeader();
-    this.submitSearch.addEventListener('click', (e) => this.searchGame(e, this));
+    // this.submitSearch.addEventListener('click', (e) => this.searchGame(e, this));
   }
 
   validation () {
@@ -34,40 +34,5 @@ class Dashboard {
       return false;
 
     return true;
-  }
-
-  async showGames () {
-    const freeToGame = new FreeToGame(this.gamesList, this.inputSearch);
-    const games = JSON.parse(await freeToGame.getAll());
-    const formattedGames = await freeToGame.toHtml(games);
-
-    freeToGame.display(formattedGames);
-  }
-
-  async searchGame (e, context) {
-    e.preventDefault();
-
-    if (!context.validation(context)){
-      context.inputSearch.classList.add('error');
-      context.inputError.innerText = 'Termo inválido. Digite novamente!'
-      context.inputError.style.display = 'block';
-
-      return;
-    }
-
-    context.inputSearch.classList.remove('error');
-    context.inputError.style.display = 'none';
-
-    const category = context.inputSearch.value;
-    const freeToGame = new FreeToGame(context.gamesList, context.inputSearch);
-
-    try {
-      const games = JSON.parse(await freeToGame.getByCategory(category));
-      const formattedGames = await freeToGame.toHtml(games);
-  
-      freeToGame.display(formattedGames);
-    } catch (e) {
-      freeToGame.display(['<p> Nenhum jogo encontrado. </p>'])
-    }
   }
 }

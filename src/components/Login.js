@@ -13,11 +13,10 @@ class Login {
   }
 
   init () {
-    if (this.getSessionToken())
+    if (auth.isAuthenticated())
       window.location.hash = 'dashboard';
 
     this.header = new Header();
-
     this.submitLogin.addEventListener('click', (e) => this.login(e, this));
   }
 
@@ -37,14 +36,6 @@ class Login {
       return [false, 'password']
 
     return [true, null];
-  }
-
-  getSessionToken () {
-    return localStorage.getItem('token');
-  }
-
-  setSessionToken (token) {
-    localStorage.setItem('token', token)
   }
 
   clearError (context) {
@@ -87,19 +78,21 @@ class Login {
     
     context.clearError(context);
 
-    const reqres = new Reqres();
-
     const email = context.inputEmail.value; 
     const password = context.inputPassword.value;
 
     try {
-      const response = JSON.parse(await reqres.login(email, password));
+      api.post('users/login', { email, password })
+      
+      .then(response => {
+        auth.login(response.token, response.admin);
 
-      context.setSessionToken(response.token);
-      context.header.userHeader();
+        window.location.hash = 'dashboard';
+      })
 
-      window.location.hash = 'dashboard';
-
+      .catch(err => {
+        alert(err.message);
+      });
     } catch (e) {
       context.displayError(context, null);
     }

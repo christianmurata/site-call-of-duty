@@ -31,7 +31,7 @@ class Header {
   }
 
   sessionLogout (context) {
-    localStorage.removeItem('token');
+    auth.logout();
     context.visitorHeader();
   }
 }
