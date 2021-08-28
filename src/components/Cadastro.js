@@ -19,7 +19,7 @@ class Cadastro {
     if(auth.isAuthenticated()) return window.location.hash = 'dashboard';
 
     this.header = new Header();
-    this.submitCadastro.addEventListener('click', (e) => this.register(e, this));
+    this.submitCadastro.addEventListener('click', (e) => this.create(e, this));
   }
 
   validation() {
@@ -100,7 +100,7 @@ class Cadastro {
     }
   }
 
-  async register(e, context) {
+  async create(e, context) {
     e.preventDefault();
 
     const [validation, input] = context.validation();
