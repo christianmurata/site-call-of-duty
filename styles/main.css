@@ -142,7 +142,7 @@ body {
   width: fit-content;
 }
 
-.login, .dashboard {
+.login, .dashboard, .cadastro {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -151,7 +151,7 @@ body {
   background: #fafafa;
 }
 
-.login .content {
+.login .content, .cadastro .content {
   width: 80%;
   max-width: 500px;
 }
@@ -199,7 +199,7 @@ body {
   outline: none;
 }
 
-.form input {
+.form input, .form textarea {
   margin: auto auto;
   width: 100%;
   margin-top: 2em;
