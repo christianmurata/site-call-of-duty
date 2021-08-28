@@ -48,6 +48,7 @@ class Router {
         try {
           route.init();
         } catch (error) {
+          console.log(error);
           console.log(`File ${uri} has no initialization class`);
         }
       }

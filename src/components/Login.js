@@ -8,13 +8,11 @@ class Login {
     this.inputs = document.getElementsByTagName('input');
     this.spanErrors = document.getElementsByTagName('span');
     
-    if (init)
-      this.init();
+    if(init) this.init();
   }
 
   init() {
-    if (auth.isAuthenticated())
-      window.location.hash = 'dashboard';
+    if(auth.isAuthenticated()) return window.location.hash = 'dashboard';
 
     this.header = new Header();
     this.submitLogin.addEventListener('click', (e) => this.login(e, this));
