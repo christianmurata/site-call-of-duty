@@ -1,5 +1,5 @@
 class Dashboard {
-  constructor () {
+  constructor() {
     this.login = new Login(false);
     this.header = new Header();
     this.gamesList = document.getElementById('games');
@@ -10,7 +10,7 @@ class Dashboard {
     this.init();
   }
 
-  init () {
+  init() {
     if (!auth.isAuthenticated())
       return window.location.hash = 'login';
           
@@ -19,7 +19,7 @@ class Dashboard {
     // this.submitSearch.addEventListener('click', (e) => this.searchGame(e, this));
   }
 
-  validation () {
+  validation() {
     const input = this.inputSearch.value.trim();
     const number = /\d/g;
     const format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;

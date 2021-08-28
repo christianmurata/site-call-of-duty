@@ -1,5 +1,5 @@
 class Login {
-  constructor (init = true) {
+  constructor(init = true) {
     this.inputEmail = document.getElementById('email');
     this.inputEmailError = document.getElementById('email-error');
     this.inputPassword = document.getElementById('password');
@@ -12,7 +12,7 @@ class Login {
       this.init();
   }
 
-  init () {
+  init() {
     if (auth.isAuthenticated())
       window.location.hash = 'dashboard';
 
@@ -20,7 +20,7 @@ class Login {
     this.submitLogin.addEventListener('click', (e) => this.login(e, this));
   }
 
-  validation () {
+  validation() {
     const email = this.inputEmail.value.trim();
     const password = this.inputPassword.value.trim();
 
@@ -38,14 +38,14 @@ class Login {
     return [true, null];
   }
 
-  clearError (context) {
+  clearError(context) {
     context.inputEmail.classList.remove('error');
     context.inputPassword.classList.remove('error');
     context.inputEmailError.style.display = 'none';
     context.inputPasswordError.style.display = 'none';
   }
 
-  displayError (context, input) {
+  displayError(context, input) {
     if (input === 'email') {
       context.inputEmail.classList.add('error');
       context.inputEmailError.innerText = 'Email inválido. Digite novamente!';
@@ -65,7 +65,7 @@ class Login {
     } 
   }
 
-  async login (e, context) {
+  async login(e, context) {
     e.preventDefault();
 
     const [validation, input] = context.validation();

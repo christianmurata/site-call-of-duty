@@ -1,5 +1,5 @@
 class Header {
-  constructor () {
+  constructor() {
     this.play = document.getElementById('play');
     this.header = document.getElementById('header');
     this.logout = document.getElementById('logout');
@@ -8,29 +8,29 @@ class Header {
     this.init();
   }
 
-  init () {
+  init() {
     this.logoutButton.addEventListener('click', (e) => this.sessionLogout(this))
   }
 
-  userHeader () {
+  userHeader() {
     this.play.style.display = 'none';
     this.logout.style.display = 'block';
     this.visibility(this.header.getElementsByClassName('item'), 'none');
   }
 
-  visitorHeader () {
+  visitorHeader() {
     this.play.style.display = 'block';
     this.logout.style.display = 'none';
     this.visibility(this.header.getElementsByClassName('item'), 'block');
   }
 
-  visibility (itens, display) {
+  visibility(itens, display) {
     for (let item of itens) {
       item.style.display = display;
     }
   }
 
-  sessionLogout (context) {
+  sessionLogout(context) {
     auth.logout();
     context.visitorHeader();
   }

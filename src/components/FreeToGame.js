@@ -15,7 +15,7 @@ class FreeToGame {
     this.gameItemBase = request('views/game.html', false, false);
   }
 
-  getAll () {
+  getAll() {
     return request(
       this.baseUrl, 
       false, 
@@ -26,7 +26,7 @@ class FreeToGame {
     );
   }
 
-  getByCategory (category) {
+  getByCategory(category) {
     return request(
       this.baseUrl, 
       {'category': category}, 
@@ -37,7 +37,7 @@ class FreeToGame {
     );
   }
 
-  async toHtml (games) {
+  async toHtml(games) {
     let gamesHtml = [];
     const baseHtml = await this.gameItemBase;
 
@@ -57,7 +57,7 @@ class FreeToGame {
     return gamesHtml;
   }
 
-  async display (formattedGames) {
+  async display(formattedGames) {
     this.gamesList.innerHTML = formattedGames.join('\r\n');
   }
 }

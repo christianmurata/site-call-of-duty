@@ -7,11 +7,11 @@ class Route {
 
   capitalize = word => word.charAt(0).toUpperCase() + word.slice(1);
 
-  isActive (pathHash) {
+  isActive(pathHash) {
     return pathHash.replace('#', '') === this.name;
   }  
 
-  init () {
+  init() {
     new (eval(this.capitalize(this.name)))()
   }
 }
