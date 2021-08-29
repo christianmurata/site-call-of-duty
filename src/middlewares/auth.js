@@ -16,6 +16,10 @@ const auth = {
     };
   },
 
+  isAdmin() {
+    return localStorage.getItem('admin') === "true";
+  },
+
   isAuthenticated() {
     return localStorage.getItem('token') !== null;
   }
