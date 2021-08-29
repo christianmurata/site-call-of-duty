@@ -7,12 +7,16 @@ const api = {
   },
 
   init() {
-    if(!auth.isAuthenticated())
-      return;
+    this.headers = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    };
 
-    const { token, admin } = auth.toJson();
-
-    this.headers = {...this.headers, authorization: `Basic ${token}`};
+    if(auth.isAuthenticated()){
+      const { token, admin } = auth.toJson();
+  
+      this.headers = {...this.headers, authorization: `Basic ${token}`};
+    }
   },
 
   handleErrors(response) {
@@ -34,12 +38,15 @@ const api = {
     .then(this.handleErrors);
   },
 
-  post(uri, body) {
+  post(uri, body, formData = false) {
     this.init();
+
+    if(formData)
+      delete this.headers['Content-Type'];
 
     return fetch(this.url + uri, {
       method: 'POST',
-      body: JSON.stringify(body),
+      body: (formData) ? body : JSON.stringify(body),
       headers: this.headers
     })
     
