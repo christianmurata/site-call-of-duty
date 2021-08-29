@@ -17,20 +17,17 @@ class Dashboard {
 
     this.header.userHeader();
     this.posts();
+    this.submitSearch.addEventListener('click', (e) => this.searchPosts(e, this));
   }
 
   validation() {
     const input = this.inputSearch.value.trim();
-    const number = /\d/g;
-    const format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    const format = /^[^a-zA-Z0-9]+$/;
 
-    if (!input)
+    if(!input)
       return false;
 
-    if (number.test(input))
-      return false;
-
-    if (format.test(input))
+    if(format.test(input))
       return false;
 
     return true;
@@ -48,6 +45,36 @@ class Dashboard {
     })
 
     .catch(err => console.error(err));
+  }
+
+  async searchPosts (e, context) {
+    e.preventDefault();
+
+    if (!context.validation(context)){
+      context.inputSearch.classList.add('error');
+      context.inputError.innerText = 'Termo inválido. Digite novamente!'
+      context.inputError.style.display = 'block';
+      return;
+    }
+
+    context.inputSearch.classList.remove('error');
+    context.inputError.style.display = 'none';
+
+    const title = context.inputSearch.value.trim();
+    const data = { title };
+
+    api.get(`posts?${new URLSearchParams(data)}`).then(posts => {
+      if(!posts.length)
+        return context.display(['<p> Nenhum post encontrado. </p>']);
+
+      this.toHtml(posts)
+      
+      .then(htmlPosts => this.display(htmlPosts))
+      
+      .catch(err => console.error(err));
+    })
+
+    .catch(err => console.error(err) || context.display(['<p> Nenhum post encontrado. </p>']));
   }
 
   async toHtml(posts) {

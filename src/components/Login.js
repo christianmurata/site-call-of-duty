@@ -43,16 +43,16 @@ class Login {
     context.inputPasswordError.style.display = 'none';
   }
 
-  displayError(context, input) {
+  displayError(context, input, msg = null) {
     if (input === 'email') {
       context.inputEmail.classList.add('error');
-      context.inputEmailError.innerText = 'Email inválido. Digite novamente!';
+      context.inputEmailError.innerText = msg || 'Email inválido. Digite novamente!';
       context.inputEmailError.style.display = 'block';
     }
 
     if (input === 'password') {
       context.inputPassword.classList.add('error');
-      context.inputPasswordError.innerText = 'Senha inválida. Digite novamente!';
+      context.inputPasswordError.innerText = msg || 'Senha inválida. Digite novamente!';
       context.inputPasswordError.style.display = 'block';
     }
 
@@ -89,6 +89,14 @@ class Login {
       })
 
       .catch(err => {
+        console.log(err);
+
+        if(err.message.match(/usuário/i))
+          return context.displayError(context, 'email', err.message);
+
+        if(err.message.match(/senha/i))
+          return context.displayError(context, 'password', err.message);
+
         alert(err.message);
       });
     } catch (e) {

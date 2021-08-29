@@ -31,26 +31,36 @@ class Post {
   displayError(context, input, msg = null) {
     if(input === 'title') {
       context.inputTitle.classList.add('error');
-      context.inputTitleError.innerText = 'O titulo do post é obrigatório'
+      context.inputTitleError.innerText = msg || 'Titulo inválido.'
       context.inputTitleError.style.display = 'block';
     }
 
     if(input === 'body') {
       context.inputBody.classList.add('error');
-      context.inputBodyError.innerText = 'O conteúdo do post é obrigatório'
+      context.inputBodyError.innerText = msg || 'Conteúdo do inválido.'
       context.inputBodyError.style.display = 'block';
+    }
+
+    if(input === 'attach') {
+      context.inputAttach.classList.add('error');
+      context.inputAttachError.innerText = msg || 'Selecione uma imagem.'
+      context.inputAttachError.style.display = 'block';
     }
   }
 
   validation() {
     const body = this.inputBody.value.trim();
     const title = this.inputTitle.value.trim();
+    const attach = this.inputAttach.value.trim();
 
     if(!title || title.length < 3)
       return [false, 'title'];
 
     if(!body || body.length < 3)
       return [false, 'body'];
+
+    if(!attach)
+      return [false, 'attach'];
 
     return [true, null];
   }
@@ -79,6 +89,14 @@ class Post {
 
     .then(post => alert('post criado'))
 
-    .catch(err => alert(err.message));
+    .catch(err => {
+      if(err.message.match(/titulo/i))
+        return context.displayError(context, 'title', err.message);
+
+      if(err.message.match(/imagem/i))
+        return context.displayError(context, 'attach', err.message);
+
+      alert(err.message);
+    });
   }
 }
