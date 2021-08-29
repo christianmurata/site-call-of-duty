@@ -1,5 +1,5 @@
 const api = {
-  url: 'http://localhost:3000/',
+  url: 'https://call-of-duty-api-utf.herokuapp.com/',
 
   headers: {
     'Accept': 'application/json',
